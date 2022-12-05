@@ -53,15 +53,14 @@ router.put("/:id", multer({storage: storage}).single("image"),(req, res, next) =
     const url = req.protocol + '://' + req.get("host");
     imagePath = url + "/images/" + req.file.filename
   }
-  const pet = new Pet({
-    _id: req.body.id,
+  const pet = {
     nombre: req.body.nombre,
     edad: req.body.edad,
     peso: req.body.peso,
     caja: req.body.caja,
     content: req.body.content,
     imagePath: imagePath
-  });
+  };
   Pet.updateOne({_id: req.params.id}, pet).then(result =>{
     res.status(200).json({message: "Pet updated Succesfully"});
   })

@@ -40,7 +40,7 @@ export class PetService{
 
   getPet(id: string){
     return this.http.get<{_id: string, nombre: string, edad: string, peso: string, caja: string, content: string, imagePath: string}>
-    ("http://localhost:3000/api/pets/" + id);
+    ("http://localhost:3000/api.pets/" + id);
   }
 
   addPet(nombre: string, edad: string, peso: string, caja: string, content: string, image: File){
@@ -109,7 +109,7 @@ export class PetService{
       updatePet[oldPosIndex] = pet;
       this.pets = updatePet;
       this.petsUpdate.next([...this.pets]);
-      this.router.navigate(["/"]);
+      this.router.navigate(["/all"]);
     });
   }
 
