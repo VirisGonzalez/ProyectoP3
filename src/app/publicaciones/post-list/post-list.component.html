@@ -1,0 +1,24 @@
+<div class="overlay" *ngIf="!load">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<mat-card *ngIf="load">
+<mat-accordion multi="true" *ngIf="posts.length >= 0">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      {{post.title}}
+    </mat-expansion-panel-header>
+    <p> {{post.direccion}}</p>
+    <p> {{post.telefono}}</p>
+    <p> {{post.caja}}</p>
+    <p> {{post.content}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]"> EDITAR </a>
+      <button mat-button color="warn" (click)="onDelete(post.id)"> ELIMINAR </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No hay publicaciones agregadas</p>
+
+

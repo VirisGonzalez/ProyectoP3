@@ -1,0 +1,25 @@
+<div class="overlay" *ngIf="!load">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<mat-card *ngIf="load">
+<mat-accordion multi="true" *ngIf="pets.length >= 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let pet of pets">
+    <mat-expansion-panel-header>
+      {{pet.nombre}}
+    </mat-expansion-panel-header>
+    <div class="pet-image">
+      <img [src]="pet.imagePath" [alt]="pet.nombre">
+    </div>
+    <p> {{pet.edad}}</p>
+    <p> {{pet.peso}}</p>
+    <p> {{pet.caja}}</p>
+    <p> {{pet.content}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/editP', pet.id]"> EDITAR </a>
+      <button mat-button color="warn" (click)="onDelete(pet.id)"> ELIMINAR </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="pets.length <= 0 && !isLoading"> No hay publicaciones agregadas</p>

@@ -1,0 +1,68 @@
+<div class="overlay" *ngIf="!load">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<mat-card *ngIf="load">
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel] = "post?.title"
+        required
+        placeholder="Nombre"
+        #title="ngModel">
+        <mat-error *ngIf= "title.invalid">Por favor ingrese un nombre</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="direccion"
+        [ngModel] = "post?.direccion"
+        required
+        placeholder="Direccion"
+        #direccion="ngModel">
+        <mat-error *ngIf= "direccion.invalid">Por favor ingrese una direccion</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="telefono"
+        [ngModel] = "post?.telefono"
+        required
+        placeholder="Telefono"
+        #telefono="ngModel">
+        <mat-error *ngIf= "telefono.invalid">Por favor ingrese un numero de telefono</mat-error>
+    </mat-form-field>
+
+    <mat-label>Seleccione la categoria</mat-label>
+      <select class='caja' [formControl]='selectControl' (change)='test()'>
+        <option value="Canino">Canino</option>
+        <option value="Felino">Felino</option>
+      </select>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        name="content"
+        [ngModel] = "post?.content"
+        required
+        placeholder="Motivo por el que se desea adoptar"
+        #content="ngModel">
+      </textarea>
+      <mat-error *ngIf= "content.invalid">Por favor ingresa el contenido</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="warn"
+      type="submit">
+      Guardar
+    </button>
+  </form>
+</mat-card>
+

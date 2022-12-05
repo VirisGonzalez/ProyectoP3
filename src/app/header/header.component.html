@@ -1,0 +1,64 @@
+<mat-toolbar color="warn"> VIHEANIMALS
+      <span class="sep" ></span>
+      <button mat-button [matMenuTriggerFor]="aboveMenu">Inicio</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <ul>
+      <li>
+        <button mat-menu-item routerLink="/"> Inicio </button>
+      </li>
+      <li>
+        <button mat-menu-item [routerLink]="['/list']">Mis solicitudes</button>
+    <span class="spacer"></span>
+      </li>
+      <li>
+        <button mat-menu-item routerLink="/create"> Nueva Solicitud</button>
+      </li>
+    </ul>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="belowMenu">Acerca de</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item>¿Que somos?</button>
+    <button mat-menu-item>¿Que hacemos?</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Portafolio</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+  <span>
+    <a routerLink="/all">Mascotas</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <a
+        routerLink="/createP">Nueva Mascota
+      </a>
+    </li>
+  </ul>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="afterMenu">Servicios</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Veterinaria</button>
+    <button mat-menu-item>Cuidados</button>
+    <button mat-menu-item>Estilista</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="neverMenu">Contacto</button>
+  <mat-menu #neverMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Teléfono</button>
+    <button mat-menu-item>Correo</button>
+    <button mat-menu-item>Ubicación</button>
+  </mat-menu>
+</mat-toolbar>
+<header>
+  <section class="textos-header">
+    <h1>LA MEJOR COMPAÑIA ES UNA MASCOTA</h1>
+    <h2>Un amigo para la vida</h2>
+  </section>
+  <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+      style="height: 100%; width: 100%;">
+      <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        style="stroke: none; fill:  #fff ;"></path>
+    </svg></div>
+</header>
+
+
+
+

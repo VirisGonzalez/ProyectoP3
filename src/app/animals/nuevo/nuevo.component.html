@@ -1,0 +1,61 @@
+<div class="overlay" *ngIf="!load">
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<mat-card *ngIf="load">
+  <form  [formGroup]="form"(submit)="onSavePet()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nombre"
+        placeholder="Nombre">
+        <mat-error *ngIf="form.get('nombre').invalid">Por favor ingrese un nombre</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Selecciona Imagen</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.nombre">
+    </div>
+    <mat-form-field>
+      <input
+        matInput
+        rowa="6"
+        formControlName="edad"
+        placeholder="Edad">
+        <mat-error *ngIf="form.get('edad').invalid">Por favor ingresa una direccion</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+      matInput
+      rows="6"
+      formControlName="peso"
+      placeholder="Peso">
+        <mat-error *ngIf="form.get('peso').invalid">Por favor ingrese un peso</mat-error>
+    </mat-form-field>
+
+    <mat-label>Seleccione la categoria</mat-label>
+      <select class='caja' [formControl]='selectControl' (change)='test()'>
+        <option value="F">F</option>
+        <option value="M">M</option>
+      </select>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        formControlName="content"
+        placeholder="content">
+      </textarea>
+      <mat-error  *ngIf="form.get('content').invalid">Por favor ingresa el contenido</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="warn"
+      type="submit">
+      Guardar
+    </button>
+  </form>
+</mat-card>
